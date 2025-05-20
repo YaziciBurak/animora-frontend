@@ -99,7 +99,10 @@ export default function SeriesDetail() {
           })}
         </ul>
 
-        <div onClick={() => navigate(`/series/${series.id}/overview`)} className="mt-6 p-4 bg-gray-900 rounded-lg flex items-center gap-4 hover:bg-gray-800 transition">
+        <div
+          onClick={() => navigate(`/series/${series.id}/overview`)}
+          className="mt-6 p-4 bg-gray-900 rounded-lg flex items-center gap-4 hover:bg-gray-800 transition"
+        >
           <img
             src={series.imageUrl || "/placeholder.jpg"}
             alt={series.title}
