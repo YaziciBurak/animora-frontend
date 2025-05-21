@@ -5,9 +5,9 @@ import { popularEpisodes } from "../data/popularEpisodes";
 
 export default function Home() {
   const sliders = [
-    { title: "Öne Çıkanlar", series: featuredSeries },
-    { title: "Yeni Eklenenler", series: newlyAddedSeries },
-    { title: "Popüler Bölümler", series: popularEpisodes },
+    { title: "Öne Çıkanlar", showMorePath: "/popular-series", series: featuredSeries },
+    { title: "Yeni Eklenenler", showMorePath: "/new-episodes", series: newlyAddedSeries },
+    { title: "Popüler Bölümler", showMorePath: "/popular-series", series: popularEpisodes },
   ];
   return (
     <div>
@@ -16,6 +16,7 @@ export default function Home() {
           key={index}
           title={slider.title}
           seriesList={slider.series}
+          showMorePath={slider.showMorePath}
         />
       ))}
     </div>

@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/common/ScrollToTop'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import SeriesDetail from './pages/SeriesDetail'
@@ -14,6 +15,7 @@ function App() {
   
   return ( 
       <Router>
+        <ScrollToTop/>
           <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black min-h-screen text-white">
           <Navbar/>
         <Routes>

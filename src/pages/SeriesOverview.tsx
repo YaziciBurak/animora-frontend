@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { allSeries } from "../data/seriesData";
 import { useNavigate, useParams } from "react-router-dom";
+import { Star } from "lucide-react";
 
 export default function SeriesOverview() {
   const { id } = useParams();
@@ -28,6 +29,14 @@ export default function SeriesOverview() {
             <h1 className="text-lg md:text-xl font-bold text-white text-center">
               {series.title}
             </h1>
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 bg-black/60 px-3 py-1 rounded-b-lg flex justify-between items-center text-xs text-gray-200">
+            <div className="flex items-center gap-1">
+              <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+              <span>{series.rating ?? "8.0"}</span>
+            </div>
+            <span>{series.year ?? "2024"}</span>
           </div>
         </div>
 
