@@ -2,6 +2,7 @@ import SeriesCard from "../SeriesCard";
 import { useScrollWithLoop } from "../../hooks/useScrollWithLoop";
 import type { AnimeScrollSectionProps } from "../../types/AnimeScrollSectionProps";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 export default function AnimeScrollSection({ title,showMorePath, seriesList  }: AnimeScrollSectionProps) {
     const { scrollRef, scrollLeft, scrollRight } = useScrollWithLoop();
@@ -11,8 +12,9 @@ export default function AnimeScrollSection({ title,showMorePath, seriesList  }: 
         <h2 className="text-2xl font-bold mb-2 text-center">{title}</h2>
         <div className="flex justify-end mb-2">
         {showMorePath && (
-          <Link to={showMorePath} className="text-sm text-pretty text-white-400 hover:underline ">
-           → Tümünü Gör 
+          <Link to={showMorePath} className="flex items-center gap-1 text-sm text-pretty text-white-400 hover:text-blue-400 transition-colors">
+           <ArrowRight className="w-4 h-4" /> 
+           <span>Tümünü Gör</span>
           </Link>
         )}
         </div>

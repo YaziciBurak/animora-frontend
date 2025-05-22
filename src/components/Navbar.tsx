@@ -1,32 +1,75 @@
+import { useState } from "react";
+import { ChevronDown, ChevronUp, Search } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import LoginModal from "./modals/LoginModal";
+import RegisterModal from "./modals/RegisterModal";
 
 export default function Navbar() {
-    return(
-        <nav className="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-800 text-white px-6 py-4 shadow-md">
-        <div className="container mx-auto flex items-center justify-between">
-          
-          <Link to="/" className="text-2xl font-bold text-purple-200">
-            Animora
-          </Link>
-  
-          <div className="hidden md:flex space-x-6">
-            <Link to="/" className="text-purple-200 hover:text-white transition">Anasayfa</Link>
-            <Link to="/new-episodes" className="text-purple-200 hover:text-white transition">Yeni Bölümler</Link>
-            <Link to="/popular-series" className="text-purple-200 hover:text-white transition">Popüler Animeler</Link>
-            <Link to="/contact" className="text-purple-200 hover:text-white transition">İletişim</Link>
-          </div>
-  
-          <div className="flex items-center space-x-2">
-            <input
-              type="text"
-              placeholder="Anime ara..."
-              className="px-3 py-1 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-300"
-            />
-            <button className="bg-purple-200 text-gray-900 px-3 py-1 rounded-lg hover:bg-purple-300 transition">
-              Ara
-            </button>
-          </div>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+
+  return (
+    <header className="bg-gradient-to-r from-purple-800 to-indigo-900 text-white">
+      <nav className="flex items-center justify-between px-6 py-3">
+          <Link to={"/"} className="font-bold text-xl">Animora</Link>
+        <div className="relative w-full max-w-md mx-6">
+          <input
+            type="text"
+            placeholder="Anime ara..."
+            className="w-full px-4 py-2 pr-10 rounded-md text-black outline-none"
+          />
+          <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-purple-500">
+            <Search size={18} />
+          </button>
+        </div>
+        <div className="flex gap-4" >
+          <button onClick={() => {
+            setIsLoginOpen(true);
+            setIsRegisterOpen(false);
+          }}
+             className="text-white px-4 py-1 rounded bg-indigo-600 hover:bg-indigo-700 transition"
+            >
+              Giriş Yap
+          </button>
+          <button onClick={() =>{
+            setIsRegisterOpen(true);
+            setIsLoginOpen(false);
+          }}
+           className="text-white px-4 py-1 rounded bg-indigo-600 hover:bg-indigo-700 transition"
+          >
+            Kayıt Ol
+          </button>
         </div>
       </nav>
-    )
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+        <RegisterModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
+      <div className="flex justify-center">
+        <button onClick={() => setMenuOpen(!menuOpen)}
+          className="text-white hover:text-purple-300"
+          >
+            {menuOpen ? <ChevronUp size={24}/> : <ChevronDown size={24}/>}
+        </button>
+      </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+          initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden bg-indigo-950"
+          >
+            <div className="flex justify-center gap-6 py-4 text-sm font-medium">
+            <Link to={"/"} className="hover:text-purple-300">Anasayfa</Link>
+            <Link to={"/new-episodes"} className="hover:text-purple-300">Yeni Bölümler</Link>
+            <Link to={"/popular-series"} className="hover:text-purple-300">Popüler Animeler</Link>
+            <Link to={"/contact"} className="hover:text-purple-300">İletişim</Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 }
