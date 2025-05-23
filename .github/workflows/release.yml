@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - semantic-release   #branch name
+      - main   #branch name
 
 jobs:
   release:
