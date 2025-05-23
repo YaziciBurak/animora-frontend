@@ -12,9 +12,9 @@ export default function Navbar() {
 
   return (
     <header className="bg-gradient-to-r from-purple-800 to-indigo-900 text-white">
-      <nav className="flex items-center justify-between px-6 py-3">
-          <Link to={"/"} className="font-bold text-xl">Animora</Link>
-        <div className="relative w-full max-w-md mx-6">
+      <nav className="grid grid-cols-3 items-center px-6 py-3">
+          <Link to={"/"} className="justify-self-start font-bold text-xl">Animora</Link>
+        <div className="justify-self-center relative w-full max-w-md mx-6">
           <input
             type="text"
             placeholder="Anime ara..."
@@ -24,7 +24,7 @@ export default function Navbar() {
             <Search size={18} />
           </button>
         </div>
-        <div className="flex gap-4" >
+        <div className="flex justify-end gap-4" >
           <button onClick={() => {
             setIsLoginOpen(true);
             setIsRegisterOpen(false);

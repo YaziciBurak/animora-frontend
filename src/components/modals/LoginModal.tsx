@@ -1,17 +1,22 @@
 import { X } from "lucide-react";
 import type { ModalProps } from "../../types/LoginModalProps";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import PasswordInput from "../inputs/PasswordInput";
+import { Controller, useForm } from "react-hook-form";
+import type { LoginFormData } from "../../types/Auth";
 
 export default function LoginModal({ isOpen, onClose }: ModalProps) {
-  const [password, setPassword] = useState("");
-  const [usernameOrEmail, setUsernameOrEmail] = useState("");
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>();
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = (data: LoginFormData) => {
+    console.log("Login form verisi:", data);
   };
 
   return (
@@ -26,18 +31,29 @@ export default function LoginModal({ isOpen, onClose }: ModalProps) {
         <h2 className="text-2xl font-bold text-center mb-4 text-purple-800">
           Giriş Yap
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          
           <input
             type="text"
             placeholder="Kullanıcı adı veya e-posta adresi"
-            value={usernameOrEmail}
-            onChange={(e) => setUsernameOrEmail(e.target.value)}
+            {...register("usernameOrEmail", { required: "Bu alan zorunlu" })}
             className="w-full px-4 py-2 pr-10 bg-white text-black rounded-md border border-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition duration-200"
           />
-          <PasswordInput
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          {errors.usernameOrEmail && (
+              <p className="text-red-500 text-sm">{errors.usernameOrEmail.message}</p>
+            )}
+          
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: "Şifre gerekli" }}
+            render={({ field }) => (
+              <PasswordInput {...field} />
+            )}
           />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          )}
           <div className="text-right">
             <Link
               to={"/forgot-password"}
