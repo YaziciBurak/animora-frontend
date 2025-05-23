@@ -8,9 +8,9 @@ export default function AnimeScrollSection({ title,showMorePath, seriesList  }: 
     const { scrollRef, scrollLeft, scrollRight } = useScrollWithLoop();
   
     return (
-      <section className="max-w-screen-xl mx-auto px-4 py-8">
-        <h2 className="text-2xl font-bold mb-2 text-center">{title}</h2>
-        <div className="flex justify-end mb-2">
+      <section className="">
+        <h2 className="text-2xl font-bold text-center">{title}</h2>
+        <div className="flex justify-end">
         {showMorePath && (
           <Link to={showMorePath} className="flex items-center gap-1 text-sm text-pretty text-white-400 hover:text-blue-400 transition-colors">
            <ArrowRight className="w-4 h-4" /> 

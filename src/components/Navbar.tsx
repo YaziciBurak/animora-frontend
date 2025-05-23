@@ -12,9 +12,9 @@ export default function Navbar() {
 
   return (
     <header className="bg-gradient-to-r from-purple-800 to-indigo-900 text-white">
-      <nav className="grid grid-cols-3 items-center px-6 py-3">
+      <nav className="grid grid-cols-[20%_60%_20%] items-center px-6 py-3">
           <Link to={"/"} className="justify-self-start font-bold text-xl">Animora</Link>
-        <div className="justify-self-center relative w-full max-w-md mx-6">
+        <div className="justify-self-center relative w-full max-w-md">
           <input
             type="text"
             placeholder="Anime ara..."
@@ -24,12 +24,12 @@ export default function Navbar() {
             <Search size={18} />
           </button>
         </div>
-        <div className="flex justify-end gap-4" >
+        <div className="flex justify-end gap-[5%] h-full" >
           <button onClick={() => {
             setIsLoginOpen(true);
             setIsRegisterOpen(false);
           }}
-             className="text-white px-4 py-1 rounded bg-indigo-600 hover:bg-indigo-700 transition"
+             className="text-sm md:text-base text-white leading-none md:leading-tight rounded bg-indigo-600 hover:bg-indigo-700 transition w-2/5"
             >
               Giriş Yap
           </button>
@@ -37,7 +37,7 @@ export default function Navbar() {
             setIsRegisterOpen(true);
             setIsLoginOpen(false);
           }}
-           className="text-white px-4 py-1 rounded bg-indigo-600 hover:bg-indigo-700 transition"
+           className="text-sm md:text-base text-white leading-none md:leading-tight rounded bg-indigo-600 hover:bg-indigo-700 transition w-2/5"
           >
             Kayıt Ol
           </button>
