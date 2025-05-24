@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/YaziciBurak/animora-frontend/compare/v1.0.0...v1.1.0) (2025-05-24)
+
+
+### Bug Fixes
+
+* The NotFound component has been added again for all undefined routes. ([5f625a7](https://github.com/YaziciBurak/animora-frontend/commit/5f625a702d3f1ec91dd64f2b39e7c1a586c08e1f))
+
+
+### Features
+
+* small screen navbar ([490ed06](https://github.com/YaziciBurak/animora-frontend/commit/490ed065b74cb828549481ddf87d9f6c3aa4a20c))
+
 # 1.0.0 (2025-05-23)
 
 
