@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-8 mt-10">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+    <footer className="bg-gradient-to-r from-purple-700 to-purple-900 text-white py-6">
+      <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <Link to={"/"} className="mb-4 md:mb-0 text-2xl font-bold">
           Animora
         </Link>
