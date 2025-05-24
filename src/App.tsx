@@ -21,11 +21,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/series/:id" element={<SeriesDetail/>} />
-          <Route path="*" element={<NotFound/>} />
           <Route path="/series/:id/overview" element={<SeriesOverview />} />
           <Route path="/new-episodes" element={<NewEpisodesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/popular-series" element={<PopularSeriesPage />} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <Footer />
         </div>
